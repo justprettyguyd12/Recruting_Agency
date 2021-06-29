@@ -1,0 +1,48 @@
+﻿@using Recruting_Agency_POP.ViewModels;
+@model VacancyViewObject
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device_width" />
+    <title>Просмотр вакансии</title>
+</head>
+<body>
+    <h2 class=" text-center text-white">@Model.ObjectVacancy.VacancyName</h2>
+    <div class="container col-10">
+        <table class="table table-hover table-bordered table-dark">
+            <tr>
+                <th class="col-4">З/П: </th>
+                <th class="col-8">@Model.ObjectVacancy.Salary</th>
+            </tr>
+            <tr>
+                <th class="col-4">Город: </th>
+                <th class="col-8">@Model.ObjectVacancy.City</th>
+            </tr>
+            <tr>
+                <th class="col-4">Обязанности: </th>
+                <th class="col-8">@Model.ObjectVacancy.Resp</th>
+            </tr>
+            <tr>
+                <th class="col-4">Требования: </th>
+                <th class="col-8">@Model.ObjectVacancy.Requests</th>
+            </tr>
+            <!--
+            <tr class="table-borderless">
+                <th colspan="1">
+                    <label for="Добавить в избранное">
+                        Добавить в избранное:
+                    </label>
+                </th>
+                <th colspan="2">
+                    <input type="checkbox" class="align-baseline" name="isSelected" value="Добавить в избранное" checked="Model.ObjectVacancy.IsSelected">
+                </th>
+            </tr>
+                -->
+        </table>
+    </div>
+</body>
+</html>

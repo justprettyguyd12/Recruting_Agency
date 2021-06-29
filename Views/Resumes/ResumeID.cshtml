@@ -1,0 +1,66 @@
+﻿@using Recruting_Agency_POP.ViewModels;
+@model ResumeViewObject
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device_width" />
+    <title>Просмотр резюме</title>
+</head>
+<body>
+    <h2 class=" text-center text-white">@Model.ObjectResume.Post</h2>
+    <div class="container col-10">
+            <table class="table table-hover table-bordered table-dark">
+                <tr>
+                    <th class="col-4">Имя: </th>
+                    <th class="col-8">@Model.ObjectResume.Name</th>
+                </tr>
+                <tr>
+                    <th class="col-4">Фамилия: </th>
+                    <th class="col-8">@Model.ObjectResume.Surname</th>
+                </tr>
+                <tr>
+                    <th class="col-4">Дата рождения: </th>
+                    <th class="col-8">@Model.ObjectResume.Birthday.ToString("dd.MM.yyyy")</th>
+                </tr>
+                <tr>
+                    <th class="col-4">Город: </th>
+                    <th class="col-8">@Model.ObjectResume.City</th>
+                </tr>
+                <tr>
+                    <th class="col-4">Желаемая з/п: </th>
+                    <th class="col-8">@Model.ObjectResume.Salary</th>
+                </tr>
+                <tr>
+                    <th class="col-4">Телефон: </th>
+                    <th class="col-8">@Model.ObjectResume.PhoneNumber</th>
+                </tr>
+                <tr>
+                    <th class="col-4">Почта: </th>
+                    <th class="col-8">@Model.ObjectResume.Email</th>
+                </tr>
+
+                <tr class="table-borderless">
+                    <th colspan="3">
+                        <form asp-action="ChangeIsSelected" asp-route-id="@Model.ObjectResume.id" method="post">
+                            @{
+                                if (Model.ObjectResume.IsSelected)
+                                {
+                                    <input class="btn btn-secondary btn-sm" value="Удалить из избранного" type="submit">
+                                }
+                                else
+                                {
+                                    <input class="btn btn-primary btn-sm" value="Добавить в избранное" type="submit">
+                                }
+                            }
+                        </form>
+                    </th>
+                </tr>
+
+            </table>
+    </div>
+</body>
+</html>

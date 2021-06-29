@@ -1,0 +1,5 @@
+{
+    "ConnectionStrings": {
+        "DefaultConnections": "Server=(localdb)\\MSSQLLocalDB;Database=AgencyDB;integrated security=True;MultipleActiveResultSets=true"
+    }
+}

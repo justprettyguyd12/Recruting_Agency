@@ -1,0 +1,85 @@
+﻿@using Recruting_Agency_POP.ViewModels;
+@model ResumesListViewObject
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device_width" />
+    <title>Список резюме</title>
+</head>
+<body>
+    <div class="container col-10">
+        <div class="row justify-content-end">
+            <div class="col-3 text-secondary ms-1">
+                <form asp-action="ListResumes" method="post" class="row justify-content-end">
+                    @{
+                        if (Model.isSelected == "Все резюме")
+                        {
+                            <input class="btn btn-secondary btn-sm" type="submit" value="Избранные резюме" asp-route-isSelected="Избранные резюме">
+                        }
+                        else
+                        {
+                            <input class="btn btn-secondary btn-sm" type="submit" value="Все резюме" asp-route-isSelected="Все резюме">
+                        }
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mb-3">
+        <h2 class="text-white">Все резюме</h2>
+    </div>
+    <div class="container col-10">
+        <table class="table table-hover table-bordered table-dark">
+            <tr class="table-light">
+                <th class="col-6">Желаемая должность</th>
+                <th class="col-3">Город</th>
+                <th class="col-3">Желаемая З/П</th>
+            </tr>
+            @{
+
+                foreach (var resume in Model.AllResumes)
+                {
+                    if (Model.isSelected == "Избранные резюме")
+                    {
+                        if (resume.IsSelected)
+                        {
+                            <tr>
+                                <th class="col-6">
+                                    <a class="nav-link text-white" href="@Url.Action("ResumeID", "Resumes", new { id = resume.id})">@resume.Post</a>
+                                </th>
+                                <th class="col-3">@resume.City</th>
+                                <th class="col-3">@resume.Salary.ToString("c")</th>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <th class="col-6">
+                                <a class="nav-link text-white" href="@Url.Action("ResumeID", "Resumes", new { id = resume.id})">@resume.Post</a>
+                            </th>
+                            <th class="col-3">@resume.City</th>
+                            <th class="col-3">@resume.Salary.ToString("c")</th>
+                        </tr>
+                    }
+
+                }
+            }
+        </table>
+        <div class="container col-10 pb-2">
+            <div class="anim-body">
+                <a asp-action="AddResume" class="anim-b">
+                    <span class="anim-l anim-l-top"></span>
+                    <span class="anim-l anim-l-right"></span>
+                    <span class="anim-l anim-l-bottom"></span>
+                    <span class="anim-l anim-l-left"></span>
+                    Добавить резюме
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

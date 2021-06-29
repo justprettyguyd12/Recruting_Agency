@@ -1,0 +1,38 @@
+﻿@model HomeViewModel
+
+<div class="card col-6 mb-5 offset-3">
+    <div class="card-body bg-dark text-white">
+        <p>
+            BestChoice - кадровое агенство, которое поможет вам быстро найти специалистов для вашего бизнеса!
+        </p>
+        <p>
+            Мы предлагаем простой и понятный сервис для быстрого и эффективного размещения вакансий и
+            поиска соискателей. Находите профессионалов своего дела быстро с сервисом BestChoice
+        </p>
+    </div>
+</div>
+
+
+<div class="row mt-2 mb-5 justify-content-center">
+    <div class="col-4 p-0">
+        <div class="card" id="card1">
+            <div class="card-body themed-grid-col text-center bg-dark text-white">
+                <p>Кол-во активных резюме:</p>
+                <div>
+                    <p class="p-big">@Model.AllResumes.Count()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4 mb-5">
+        <div class="card" id="card1">
+            <div class="card-body themed-grid-col text-center bg-dark text-white">
+                <p>Кол-во активных вакансий:</p>
+                <div>
+                    <p class="p-big">@Model.AllVacancies.Count()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

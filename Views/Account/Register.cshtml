@@ -1,0 +1,35 @@
+﻿@model RegisterViewModel
+
+<div class="row">
+    <h2 class=" text-center text-white">Зарегистрироваться</h2>
+    <div class="container col-4">
+        <form asp-controller="Account" asp-action="Register" method="post" class="bg-dark text-white">
+            <div class="container-fluid">
+                <div class="pt-2 pb-2">
+                    <label asp-for="UserName">Логин</label>
+                    <div>
+                        <input type="text" asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label asp-for="Password">Пароль</label>
+                    <div>
+                        <input type="text" asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label asp-for="Name">Имя</label>
+                    <div>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-3 bg-dark">
+                    <input class="btn btn-primary" type="submit" value="Зарегистрироваться">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

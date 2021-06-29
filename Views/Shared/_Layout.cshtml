@@ -1,0 +1,91 @@
+﻿@{
+    // получаем имя controller
+    string controllerName = Context.Request.RouteValues["controller"].ToString();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <header class="borderlow p-1 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-around">
+                <ul class="nav col-9 col-lg-center me-lg-auto mb-2 justify-content-around mb-md-0">
+                    @{
+                        if (controllerName == "Resumes") //контроллер "Работодателям" - показывает резюме
+                        {
+                            <li class="col-m-3"><a href="@Url.Action("ListResumes", "Resumes")" class="nav-link px-2 text-secondary">Работодателям</a></li>
+                            <li class="col-m-3"><a href="@Url.Action("ListVacancies", "Vacancies")" class="nav-link px-2 text-white">Соискателям</a></li>
+                        }
+                        else if (controllerName == "Vacancies") //контроллер "Соискателям" - показывает вакансии
+                        {
+                            <li class="col-m-3"><a href="@Url.Action("ListResumes", "Resumes")" class="nav-link px-2 text-white">Работодателям</a></li>
+                            <li class="col-m-3"><a href="@Url.Action("ListVacancies", "Vacancies")" class="nav-link px-2 text-secondary">Соискателям</a></li>
+                        }
+                        else //контроллер не определен
+                        {
+                            <li class="col-m-3"><a href="@Url.Action("ListResumes", "Resumes")" class="nav-link px-2 text-white">Работодателям</a></li>
+                            <li class="col-m-3"><a href="@Url.Action("ListVacancies", "Vacancies")" class="nav-link px-2 text-white">Соискателям</a></li>
+                        }
+                    }
+                </ul>
+                <div class="row col-3">
+                    <div class="container">
+                        <div class="row justify-content-end">
+                            @{
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    <form asp-controller="Account" asp-action="Logout">
+                                        <input class="btn btn-outline-light me-2 btn-sm" value=@User.Identity.Name type="submit">
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-controller="Account" asp-action="Login" method="get" class="container col-3"> <!--Войти-->
+                                        <input class="btn btn-outline-light me-2 btn-sm" value="Войти" type="submit">
+                                    </form>
+                                    <form asp-controller="Account" asp-action="Register"  method="get" class="container col-3"> <!--Зарегаться-->
+                                        <input class="btn btn-primary btn-sm" value="Зарегистрироваться" type="submit">
+                                    </form>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid" id="maincontent">
+        @RenderBody()
+    </div>
+
+    <!--FOOTER-->
+    <footer class="container-fluid footer">
+        <nav class="navbar fixed-bottom p-1 bg-dark text-white">
+            <div class="container">
+                <p>BestChoice ©2021 Company, Inc.</p>
+                @{
+                    if (controllerName == "Home")
+                    {
+                        <p><a asp-controller="Home" asp-action="Index" class="nav-link px-2 text-secondary float-end">Вернуться на главную</a></p>
+                    }
+                    else
+                    {
+                        <p><a asp-controller="Home" asp-action="Index" class="nav-link px-2 text-white float-end">Вернуться на главную</a></p>
+                    }
+                }
+
+            </div>
+        </nav>
+    </footer>
+
+    <script src="~/js/bootstrap.min.js"></script>
+</body>
+</html>

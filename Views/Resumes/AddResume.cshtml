@@ -1,0 +1,70 @@
+﻿@model Resume
+
+<div class="row">
+    <h2 class=" text-center text-white">Добавить резюме</h2>
+    <div class="container col-4">
+        <form asp-action="AddResume" method="post" class="bg-dark text-white">
+            <div class="container-fluid">
+                <div class="pt-2 pb-2">
+                    <label asp-for="Name">Имя</label>
+                    <div>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label asp-for="Surname">Фамилия</label>
+                    <div>
+                        <input type="text" asp-for="Surname" class="form-control" />
+                        <span asp-validation-for="Surname" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label asp-for="City">Город</label>
+                    <div>
+                        <input type="text" asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label asp-for="Birthday.Date">Дата рождения</label>
+                    <div>
+                        <input type="date" asp-for="Birthday.Date" class="form-control" />
+                        <span asp-validation-for="Birthday.Date" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label asp-for="Post">Желаемая должность</label>
+                    <div>
+                        <input type="text" asp-for="Post" class="form-control" />
+                        <span asp-validation-for="Post" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label asp-for="Salary">Желаемая З/П</label>
+                    <div>
+                        <input type="number" asp-for="Salary" class="form-control" />
+                        <span asp-validation-for="Salary" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label asp-for="PhoneNumber">Телефон</label>
+                    <div >
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label asp-for="Email">Почта</label>
+                    <div>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pt-2 pb-3 bg-dark">
+                    <input class="btn btn-primary" type="submit" value="Сохранить резюме">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

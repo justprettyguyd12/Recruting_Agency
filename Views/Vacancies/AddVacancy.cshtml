@@ -1,0 +1,49 @@
+﻿@model Vacancy
+
+    <div class="row">
+        <h2 class=" text-center text-white">Добавить вакансию</h2>
+        <div class="container col-4">
+            <form asp-action="AddVacancy" method="post" class="bg-dark text-white">
+                <div class="container-fluid">
+                    <div class="pt-2 pb-2">
+                        <label asp-for="VacancyName">Название вакансии</label>
+                        <div>
+                            <input type="text" asp-for="VacancyName" class="form-control" />
+                            <span asp-validation-for="VacancyName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="pt-2 pb-2">
+                        <label asp-for="Salary">Предлагаемая З/П</label>
+                        <div>
+                            <input type="number" asp-for="Salary" class="form-control" />
+                            <span asp-validation-for="Salary" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="pt-2 pb-2">
+                        <label asp-for="City">Город</label>
+                        <div>
+                            <input type="text" asp-for="City" class="form-control" />
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="pt-2 pb-2">
+                        <label asp-for="Resp">Обязанности</label>
+                        <div>
+                            <textarea type="text" asp-for="Resp" class="form-control"></textarea>
+                            <span asp-validation-for="Resp" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="pt-2 pb-2">
+                        <label asp-for="Requests">Требования</label>
+                        <div>
+                            <textarea type="text" asp-for="Requests" class="form-control"></textarea>
+                            <span asp-validation-for="Requests" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="pt-2 pb-3 bg-dark">
+                        <input class="btn btn-primary" type="submit" value="Сохранить резюме">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,49 @@
+﻿@using Recruting_Agency_POP.ViewModels;
+@model VacanciesListViewObject
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device_width" />
+    <title>Список вакансий</title>
+</head>
+<body>
+    <div class="text-center mb-3">
+        <h2 class="text-white">Все вакансии</h2>
+    </div>
+    <div class="container col-10">
+        <table class="table table-hover table-bordered table-dark">
+            <tr class="table-light">
+                <th class="col-6">Вакансия</th>
+                <th class="col-3">Город</th>
+                <th class="col-3">З/П</th>
+            </tr>
+            @{
+                foreach (var vacancy in Model.AllVacancies)
+                {
+                    <tr>
+                        <th class="col-md-6 themed-grid-col">
+                            <a class="nav-link text-white" href="@Url.Action("VacancyID", "Vacancies", new { id = vacancy.id})">@vacancy.VacancyName</a>
+                        </th>
+                        <th class="col-md-3 themed-grid-col">@vacancy.City</th>
+                        <th class="col-md-3 themed-grid-col">@vacancy.Salary.ToString("c")</th>
+                    </tr>
+                }
+            }
+        </table>
+        <div class="container col-10 pb-2">
+            <div class="anim-body">
+                <a asp-action="AddVacancy" class="anim-b">
+                    <span class="anim-l anim-l-top"></span>
+                    <span class="anim-l anim-l-right"></span>
+                    <span class="anim-l anim-l-bottom"></span>
+                    <span class="anim-l anim-l-left"></span>
+                    Добавить вакансию
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
